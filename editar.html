@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <title>Dashboard Financeiro</title>
+</head>
+
+<body class="dark-mode-variables">
+
+    <div class="container">
+
+        <aside>
+
+            <div class="toggle">
+
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">
+                        close
+                    </span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+
+                <div class="img-user">
+
+                    <img src="img.png" alt="">
+
+                </div>
+
+                <a href="dash.html">
+                    <span class="material-icons-sharp">
+                        dashboard
+                    </span>
+                    <h3>Dashboard</h3>
+                </a>
+
+                <a href="#" class="active">
+                    <span class="material-icons-sharp">
+                        edit
+                    </span>
+                    <h3>Editar</h3>
+                </a>
+
+                <a href="index.html" id="logout-btn">
+                    <span class="material-icons-sharp">
+                        logout
+                    </span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+
+        </aside>
+
+        <main>
+
+
+            <div class="header">
+
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">
+                        menu
+                    </span>
+                </button>
+
+                <h1>Olá, Empresa</h1>
+
+                <div class="datas">
+
+                    <div>
+
+                        <label>Ano: </label>
+
+                        <select id="ano">
+
+                            <option value="2025">2025</option>
+
+                        </select>
+
+                        <label>Mês: </label>
+
+                        <select id="mes">
+
+                            <option value="01">jan</option>
+                            <option value="02">fev</option>
+                            <option value="03">mar</option>
+                            <option value="04">abr</option>
+                            <option value="05">mai</option>
+                            <option value="06">jun</option>
+                            <option value="07">jul</option>
+                            <option value="08">ago</option>
+                            <option value="09">set</option>
+                            <option value="10">out</option>
+                            <option value="11">nov</option>
+                            <option value="12">dez</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="dark-mode">
+                        <span class="material-icons-sharp active">
+                            light_mode
+                        </span>
+                        <span class="material-icons-sharp">
+                            dark_mode
+                        </span>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+
+
+            <iframe id="iframe"
+                src="https://docs.google.com/spreadsheets/d/1LmYtbZjeCW86O100dZQbI0LvAKjA2xGf-ulBwupksPM/edit?gid=0#gid=0"
+                style="width: 100%; height:80vh"></iframe>
+
+
+
+        </main>
+
+    </div>
+
+</body>
+
+<script>
+
+    const sideMenu = document.querySelector('aside');
+    const menuBtn = document.getElementById('menu-btn');
+    const closeBtn = document.getElementById('close-btn');
+
+    const darkMode = document.querySelector('.dark-mode');
+
+    menuBtn.addEventListener('click', () => {
+        sideMenu.style.display = 'block';
+    });
+
+    closeBtn.addEventListener('click', () => {
+        sideMenu.style.display = 'none';
+    });
+
+    darkMode.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode-variables');
+        darkMode.querySelector('span:nth-child(1)').classList.toggle('active');
+        darkMode.querySelector('span:nth-child(2)').classList.toggle('active');
+    })
+
+    if (sessionStorage.getItem("logon") !== "1") {
+        alert("Acesso não autorizado! Você será redirecionado para a tela de login.");
+        window.location.href = "index.html";
+    }
+
+</script>
+
+</html>

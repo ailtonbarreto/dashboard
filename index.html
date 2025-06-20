@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Finenceiro</title>
+</head>
+
+<style>
+    :root {
+        --bg: #f6f6f9;
+        --cor-texto: #201f1f;
+        --cor-container: #fff;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        height: 100vh;
+        width: 100vw;
+        color: var(--bg);
+        overflow-y: hidden;
+        background-color: var(--cor-container);
+    }
+
+    #loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    #spinner {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid var(--cor-texto);
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+    }
+
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    #menu-icon {
+        cursor: pointer;
+        font-size: 40px;
+        margin-left: -1vw;
+    }
+
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        position: absolute;
+        z-index: 1;
+        background-color: var(--bg);
+        width: 100vw;
+        height: 100vh;
+    }
+
+    form {
+        color: var(--bg);
+        padding: 3vw;
+        background-color: var(--cor-container);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 4px;
+        width: 30vw;
+        height: 70vh;
+        box-shadow: 1rem 1rem 8vw var(--cor-texto);
+    }
+
+    input {
+        outline: none;
+        height: 1.5vw;
+        width: 100%;
+        color: var(--cor-texto);
+    }
+
+    .campos {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 0.5vw;
+        width: 60%;
+    }
+
+    label {
+        font-weight: bold;
+        color: var(--cor-texto);
+    }
+
+    button {
+        color: var(--cor-container);
+        border: none;
+        background-color: var(--cor-texto);
+        height: 2vw;
+        padding: 1vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60%;
+        border-radius: 3px;
+        margin-bottom: 1vw;
+        cursor: pointer;
+    }
+
+    .message {
+        color: red;
+        font-weight: bold;
+        height: 3vw;
+
+    }
+
+    .msg {
+        display: flex;
+        justify-content: space-between;
+        width: 100vw;
+        height: 2.5vw;
+        padding: 0vw 2vw;
+        align-items: center;
+
+    }
+
+    img {
+        width: 14vw;
+    }
+
+
+    /* ---------------------------------------------------- */
+
+    @media (max-width: 768px) {
+
+
+        .form {
+            justify-content: space-between;
+            height: 70vh;
+            width: 100vw;
+            text-align: center;
+            border: none;
+            padding: 2vh;
+            background-color: transparent;
+            box-shadow: none;
+        }
+
+        img {
+            width: 50vw;
+        }
+
+        .campos {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            width: 60%;
+        }
+
+
+        .form button {
+            padding: 3vw;
+            height: 10vw;
+            width: 60%;
+            margin-top: 4vw;
+        }
+
+
+        label {
+            font-weight: bold;
+            font-size: 4vw;
+            margin: 2vw 0vw;
+        }
+
+        input {
+            outline: none;
+            height: 8vw;
+            width: auto;
+            color: var(--cor-texto);
+            outline: none;
+        }
+
+
+        .msg {
+            display: flex;
+            justify-content: space-between;
+            width: 100vw;
+            height: 10vw;
+            padding: 0vw 2vw;
+        }
+
+
+        #logged-message {
+            text-transform: capitalize;
+            display: flex;
+            font-size: 5vw;
+            text-align: center;
+        }
+
+        .message {
+            margin-bottom: 50vw;
+        }
+
+    }
+</style>
+
+<body>
+
+    <div id="loading">
+
+        <div class="spinner" id="spinner"></div>
+
+    </div>
+
+
+    <div id="container-login" class="container">
+
+        <form id="loginForm" class="form">
+
+            <img src="img.png">
+
+            <div class="campos">
+
+
+                <label for="password">Senha</label>
+
+                <input id="password" type="password">
+
+            </div>
+            <button type="submit">Entrar</button>
+
+            <p id="alert" class="message"></p>
+
+        </form>
+
+    </div>
+
+    <div class="screen-logged">
+
+        <iframe src="" frameborder="0" id="tela" style="width: 100vw; height:100vh"></iframe>
+
+
+    </div>
+
+    <script src="login.js" defer></script>
+
+
+</body>
+
+
+</html>
