@@ -331,7 +331,8 @@ main .analyse h3 {
     box-shadow: var(--box-shadow);
     padding: 0.5vw;
     height: 15vw;
-    transition: all 0.3s ease;;
+    transition: all 0.3s ease;
+    ;
 }
 
 .chart_card:hover {
@@ -393,7 +394,8 @@ td {
 /* ----------------------------------------------------------------------- */
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 968px),
+screen and (orientation: portrait) {
 
     .container {
         width: 100%;
@@ -473,10 +475,10 @@ td {
         animation: showMenu 0.4s ease forwards;
     }
 
-    main{
+    main {
         display: flex;
-        justify-content: flex-start;   
-        
+        justify-content: flex-start;
+
     }
 
     aside .sidebar {
