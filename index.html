@@ -11,7 +11,7 @@
 <style>
     :root {
         --bg: #181a1e;
-        --cor-texto: #edeffd;
+        --cor-texto: #ffffff;
         --cor-container: #202528;
     }
 
@@ -35,7 +35,7 @@
         left: 0;
         width: 100vw;
         height: 100vh;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(61, 61, 61, 0.5);
         display: none;
         justify-content: center;
         align-items: center;
@@ -43,7 +43,7 @@
     }
 
     #spinner {
-        border: 4px solid #f3f3f3;
+        border: 4px solid #000000;
         border-top: 4px solid var(--cor-texto);
         border-radius: 50%;
         width: 50px;
@@ -103,6 +103,7 @@
         color: #000;
         border-radius: 3px;
         border: none;
+        background-color: var(--cor-texto);
     }
 
     .campos {
@@ -156,7 +157,8 @@
 
     /* ---------------------------------------------------- */
 
-    @media (max-width: 768px) {
+    @media screen and (max-width: 968px),
+    screen and (orientation: portrait) {
 
 
         .form {
@@ -181,27 +183,28 @@
             width: 60%;
         }
 
+        input {
+            outline: none;
+            padding: 3vw;
+            height: 8vw;
+            width: auto;
+        }
 
         .form button {
             padding: 3vw;
-            height: 10vw;
+            height: 8vw;
             width: 60%;
-            margin-top: 4vw;
+            margin-top: 2vw;
         }
 
 
         label {
             font-weight: bold;
             font-size: 4vw;
-            margin: 2vw 0vw;
+            margin: 4vw 0vw;
         }
 
-        input {
-            outline: none;
-            height: 8vw;
-            width: auto;
-            outline: none;
-        }
+
 
 
         .msg {
