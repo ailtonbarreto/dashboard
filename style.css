@@ -516,7 +516,7 @@ screen and (orientation: portrait) {
     .chart_card {
         padding: 3vw;
         margin-top: 0;
-        height: 35vh;
+        height: auto;
     }
 
     .chart_card:last-child {
