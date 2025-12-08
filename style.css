@@ -463,8 +463,10 @@ screen and (orientation: portrait) {
 
 
     .hide-mobile {
-        display: none;
+        visibility: hidden !important;
     }
+
+    
 
     aside {
         position: fixed;
@@ -516,7 +518,7 @@ screen and (orientation: portrait) {
     .chart_card {
         padding: 3vw;
         margin-top: 0;
-        height: auto;
+        min-height: 30vh;
     }
 
     .chart_card:last-child {
