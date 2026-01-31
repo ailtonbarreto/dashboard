@@ -135,6 +135,9 @@ b {
     }
 }
 
+.material-icons-sharp{
+    cursor: pointer;
+}
 
 #menu-btn {
     display: none;
@@ -393,6 +396,10 @@ td {
 
 .hide-mobile {
     display: none;
+}
+
+#logout-btn{
+    cursor: pointer;
 }
 
 /* ----------------------------------------------------------------------- */

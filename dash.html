@@ -55,10 +55,10 @@
 
                     <h3>Editar</h3>
                 </a>
-    
-                <a href="index.html" id="logout-btn">
 
-                    <span class="material-icons-sharp">
+                <a onclick="logout()" id="logout-btn">
+
+                    <span class="material-icons-sharp" onclick="logout()">
                         logout
                     </span>
 
@@ -117,12 +117,11 @@
 
 
                     <div class="dark-mode">
+
                         <span class="material-icons-sharp active">
-                            light_mode
+                            brightness_medium
                         </span>
-                        <span class="material-icons-sharp">
-                            dark_mode
-                        </span>
+
                     </div>
 
                 </div>
@@ -241,6 +240,13 @@
         alert("Acesso não autorizado! Você será redirecionado para a tela de login.");
         window.location.href = "index.html";
     }
+
+    function logout() {
+        sessionStorage.removeItem("logon");
+        sessionStorage.removeItem("empresa");
+        window.location.href = "index.html";
+    }
+
 
 </script>
 

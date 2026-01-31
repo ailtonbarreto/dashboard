@@ -1,12 +1,22 @@
-window.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("DOMContentLoaded", () => {
+
+
+  if (sessionStorage.getItem("logon") === "1") {
+    esconderLogin();
+    carregarDashboard();
+    return;
+  }
+
   configurarFormularioLogin();
 });
 
-function configurarFormularioLogin() {
-  const loginForm = document.getElementById("loginForm");
 
-  loginForm.addEventListener("submit", async function (event) {
-    event.preventDefault();
+function configurarFormularioLogin() {
+  const form = document.getElementById("loginForm");
+  if (!form) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
     const password = document.getElementById("password").value.trim();
 
@@ -15,51 +25,45 @@ function configurarFormularioLogin() {
       return;
     }
 
-    await validarCredenciais(password);
+    await validarSenha(password);
   });
 }
 
-// ==========================================================
-// VALIDA SENHA PELO CSV DA PLANILHA
-// ==========================================================
-async function validarCredenciais(password) {
+
+async function validarSenha(password) {
   const spinner = document.getElementById("loading");
-  spinner.style.display = "flex";
+  if (spinner) spinner.style.display = "flex";
 
   try {
-    // 1️⃣ busca URL do CSV no keys.json
+
     const keyReq = await fetch("keys.json");
     const keyJson = await keyReq.json();
 
     const csvReq = await fetch(keyJson[0].base);
     const csvText = await csvReq.text();
 
-    // 2️⃣ processa CSV
     const senhas = processarCSV(csvText);
 
-    // 3️⃣ valida senha
-    const senhaValida = senhas.includes(password);
-
-    spinner.style.display = "none";
-
-    if (!senhaValida) {
+    if (!senhas.includes(password)) {
       exibirAlerta("Senha incorreta!");
       return;
     }
 
-    // mantém seu fluxo original
-    realizarLogin({ empresa: "Barreto Soluções" });
+    // login OK
+    sessionStorage.setItem("logon", "1");
+    sessionStorage.setItem("empresa", "Barreto Soluções");
+
+    esconderLogin();
+    carregarDashboard();
 
   } catch (err) {
-    console.error("Erro ao validar senha:", err);
-    spinner.style.display = "none";
+    console.error(err);
     exibirAlerta("Erro ao validar senha.");
+  } finally {
+    if (spinner) spinner.style.display = "none";
   }
 }
 
-// ==========================================================
-// CSV → ARRAY DE SENHAS
-// ==========================================================
 function processarCSV(csv) {
 
   csv = csv.replace(/^\uFEFF/, ""); // remove BOM
@@ -86,23 +90,21 @@ function limpar(valor = "") {
   return valor.replace(/^"+|"+$/g, "").trim();
 }
 
-
-function realizarLogin(userData) {
-  sessionStorage.setItem("logon", "1");
-
-  let empresa = userData.empresa || "";
-  if (empresa.startsWith('"') && empresa.endsWith('"')) {
-    empresa = empresa.slice(1, -1);
-  }
-
-  sessionStorage.setItem("empresa", empresa);
-
-  document.getElementById("container-login").style.display = "none";
-  document.getElementById("tela").src = "dash.html";
+function esconderLogin() {
+  const login = document.getElementById("container-login");
+  if (login) login.style.display = "none";
 }
 
-function exibirAlerta(mensagem) {
+function carregarDashboard() {
+  const iframe = document.getElementById("tela");
+  if (iframe) iframe.src = "dash.html";
+}
+
+function exibirAlerta(msg) {
   const alert = document.getElementById("alert");
-  alert.innerText = mensagem;
+  if (!alert) return;
+
+  alert.innerText = msg;
   alert.style.display = "block";
 }
+
