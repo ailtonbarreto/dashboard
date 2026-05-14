@@ -34,16 +34,31 @@ window.addEventListener('load', () => {
             color: ['#06d6a0', '#ef233c'],
             tooltip: { trigger: 'item' },
             legend: { show: false },
+
             series: [{
                 type: 'pie',
                 radius: ['40%', '60%'],
                 avoidLabelOverlap: false,
+
                 label: {
                     show: true,
                     position: 'outside',
                     color: getCorRotulo(),
+
+                    formatter: function (params) {
+                        return `${params.name}\n${params.value.toLocaleString('pt-BR', {
+                            style: 'currency',
+                            currency: 'BRL'
+                        })}`;
+                    }
                 },
-                labelLine: { show: true, length: 5, length2: 2 },
+
+                labelLine: {
+                    show: true,
+                    length: 5,
+                    length2: 2
+                },
+
                 data: []
             }]
         });
