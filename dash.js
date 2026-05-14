@@ -170,19 +170,48 @@ window.addEventListener('load', () => {
                 {
                     name: 'Entradas',
                     type: 'line',
+                    stack: 'total',
+
                     symbol: 'none',
-                    itemStyle: { color: '#06d6a0' },
-                    areaStyle: { color: '#06d6a0' },
-                    lineStyle: { color: '#06d6a0' },
+
+                    itemStyle: {
+                        color: '#06d6a0'
+                    },
+
+                    lineStyle: {
+                        color: '#06d6a0',
+                        width: 2
+                    },
+
+                    areaStyle: {
+                        opacity: 0.8,
+                        color: '#06d6a0'
+                    },
+
                     data: entradas
                 },
+
                 {
                     name: 'Saídas',
                     type: 'line',
+                    stack: 'total',
+
                     symbol: 'none',
-                    itemStyle: { color: 'red' },
-                    areaStyle: { color: 'red' },
-                    lineStyle: { color: 'red' },
+
+                    itemStyle: {
+                        color: 'red'
+                    },
+
+                    lineStyle: {
+                        color: 'red',
+                        width: 2
+                    },
+
+                    areaStyle: {
+                        opacity: 0.8,
+                        color: 'red'
+                    },
+
                     data: saidas
                 }
             ]
