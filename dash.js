@@ -45,12 +45,11 @@ window.addEventListener('load', () => {
                     position: 'outside',
                     color: getCorRotulo(),
 
-                    formatter: function (params) {
-                        return `${params.name}\n${params.value.toLocaleString('pt-BR', {
+                    formatter: params =>
+                        `${params.name}: ${params.value.toLocaleString('pt-BR', {
                             style: 'currency',
                             currency: 'BRL'
-                        })}`;
-                    }
+                        })}`
                 },
 
                 labelLine: {
